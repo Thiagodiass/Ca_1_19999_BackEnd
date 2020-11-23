@@ -69,7 +69,7 @@ Inside of the function i declared some check to handle each input that the user 
 
 ![](Images/PUTMIDDLE.png)
 
-![](Images/PUTSMIDDLE2.png)
+![](Images/PUTMIDDLE2.png)
 
 ![](Images/PUTEND.png)
 
