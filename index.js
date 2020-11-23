@@ -28,11 +28,11 @@ app.get('/',(req,res)=>{
 })
 
 //get prisioner from database
-app.get('/prisoner',(req,res)=>{
+app.get('/prisoner/:id',(req,res)=>{
     //function to find the prisoner just for the the firstname but i can change and choose the best way to find it.
     async function findPrisoner(){
         //initializate the constant with the name from the user and find if there are any prisoner    
-        const foundPrisoner = await prisonerDb.findOne({firstName:"George"})
+        const foundPrisoner = await prisonerDb.findOne({_id:ObjectId(req.params.id)})
         //get the data from the prisoner
         res.json(foundPrisoner)
     };
@@ -84,24 +84,247 @@ app.put('/prisoner',(req,res)=>{
                 foundPrisoner.goodBehaviour,
                 foundPrisoner.lastName,
                 foundPrisoner.physicalActivity)
-            //modify the data    
-            prisoner.zone = req.body.zone;
-            //check if there are any error    
-            try{
+            
+            //Check if the variable is null or same  
+            if(req.body.firstName !== "" && req.body.firstName !== prisoner.firstName)
+            {
+                //modify the data 
+                prisoner.firstName = req.body.firstName;
+                //just showing that the data was successfull updated
+                console.log("First Name Updated");
+                //check if there are any error
+                try{
+                    //send to the database id and the prisoner data modified
+                    const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                    {$set:{firstName: req.body.firstName}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+            }
+            else{
+                console.log("First Name Empty or the same");
+            }  
+           //Check if the variable is null or same  
+           if(req.body.age !== "" && req.body.age !== prisoner.age)
+           {
+               //modify the data 
+               prisoner.age = req.body.age;
+               //just showing that the data was successfull updated
+               console.log("Age Updated");
+               //check if there are any error
+               try{
                 //send to the database id and the prisoner data modified
                 const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
-                {$set:prisoner})
-            }
-            //if there are any error going to show the error on the screen
-            catch(err){
-                console.log(err.stack)
-            }
-            //just showing that the data was successfull updated
-            res.send("Zone Updated");
+                {$set:{age: req.body.age}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Age Empty or the same");
+           }
+            //Check if the variable is null or same  
+           if(req.body.infraction !== "" && req.body.infraction !== prisoner.infraction)
+           {
+               //modify the data 
+               prisoner.infraction = req.body.infraction;
+               //just showing that the data was successfull updated
+               console.log("Infraction Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{infraction: req.body.infraction}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+                console.log("Infraction Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.cell !== "" && req.body.cell !== prisoner.cell)
+           {
+               //modify the data 
+               prisoner.cell = req.body.cell;
+               //just showing that the data was successfull updated
+               console.log("Cell Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{cell: req.body.cell}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Cell Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.zone !== "" && req.body.zone !== prisoner.zone)
+           {
+               //modify the data 
+               prisoner.zone = req.body.zone;
+               //just showing that the data was successfull updated
+               console.log("Zone Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{zone: req.body.zone}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Zone Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.finishOfsentence !== "" && req.body.finishOfsentence !== prisoner.finishOfsentence)
+           {
+               //modify the data 
+               prisoner.finishOfsentence = req.body.finishOfsentence;
+               //just showing that the data was successfull updated
+               console.log("Finish Of Sentence Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{finishOfsentence: req.body.finishOfsentence}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Finish Of Sentence Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.startOfSentence !== "" && req.body.startOfSentence !== prisoner.startOfSentence)
+           {
+               //modify the data 
+               prisoner.startOfSentence = req.body.startOfSentence;
+               //just showing that the data was successfull updated
+               console.log("Start of Sentence Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{startOfSentence: req.body.startOfSentence}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Start of Sentence Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.solitaryConfinement !== "" && req.body.solitaryConfinement !== prisoner.solitaryConfinement)
+           {
+               //modify the data 
+               prisoner.solitaryConfinement = req.body.solitaryConfinement;
+               //just showing that the data was successfull updated
+               console.log("Solitary Confinement Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{solitaryConfinement: req.body.solitaryConfinement}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Solitary Confinement Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.goodBehaviour !== "" && req.body.goodBehaviour !== prisoner.goodBehaviour)
+           {
+               //modify the data 
+               prisoner.goodBehaviour = req.body.goodBehaviour;
+               //just showing that the data was successfull updated
+               console.log("Good behaviour Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{goodBehaviour: req.body.goodBehaviour}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Good Behaviour Empty or the same");
+           }
+
+           //Check if the variable is null or same  
+           if(req.body.lastName !== "" && req.body.lastName !== prisoner.lastName)
+           {
+               //modify the data 
+               prisoner.lastName = req.body.lastName;
+               //just showing that the data was successfull updated
+               console.log("Last Name Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{lastName: req.body.lastName}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Last Name Empty or the same");
+           }
+           //Check if the variable is null or same  
+           if(req.body.physicalActivity !== "" && req.body.physicalActivity !== prisoner.physicalActivity)
+           {
+               //modify the data 
+               prisoner.physicalActivity = req.body.physicalActivity;
+               //just showing that the data was successfull updated
+               console.log("Physical Activity Updated");
+               //check if there are any error
+               try{
+                //send to the database id and the prisoner data modified
+                const updateResult = await prisonerDb.updateOne({"_id":ObjectId(req.body.id)},
+                {$set:{physicalActivity: req.body.physicalActivity}})
+                }
+                //if there are any error going to show the error on the screen
+                catch(err){
+                    console.log(err.stack)
+                }
+           }
+           else{
+               console.log("Physical Activity Empty or the same");
+           }
+           
+           //send message to Postman
+           res.send("Prisoner Successful Updated");
+            
         }
         //if there are any error going to show that message
         else{
-            res.send("Zone could not Updated");
+            res.send("Prisoner could not Updated");
         }
     }
     //if the input is incorrect or occur any error going to show this message 

@@ -63,11 +63,23 @@ Using the POST function I manualy declared the variables on postman to reach the
 
 The PUT Function going to handle all changes that migth be necessary to the prisoner as moving to a different section, cell, beraviour and so on.
 
-![](Images/PUT.png)
+![](Images/PUTSTART.png)
 
-Using the PUT function I manualy declared the variable zone on postman to reach the database and return the message "Zone Updated"
+Inside of the function i declared some check to handle each input that the user might submit
 
-![](Images/POSTMANPUT.png)
+![](Images/PUTMIDDLE.png)
+
+![](Images/PUTSMIDDLE2.png)
+
+![](Images/PUTEND.png)
+
+Using the PUT function I manualy declared the variable on postman to reach the database and return the message "Prisoner Successful Updated"
+
+![](Images/PostMODIFY.png)
+
+If submit values empty or the sabe as already initializate going to show the the message "Prisoner Successful Updated" but inside of the console going to show the variable that weren't modified.
+
+![](Images/POSTSAMEVALUE.png)
 
 As you can see BEFORE modify the prisoner the zone was "C".
 
