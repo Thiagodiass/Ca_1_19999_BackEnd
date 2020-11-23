@@ -1,5 +1,5 @@
 
-//initialization the express
+//initialization the express Web Application
 var express = require('express')
 //transfering the property of the function express to the constant app.
 const app = express()
