@@ -79,7 +79,7 @@ Using the PUT function I manualy declared the variable on postman to reach the d
 
 If submit values empty or the sabe as already initializate going to show the the message "Prisoner Successful Updated" but inside of the console going to show the variable that weren't modified.
 
-![](Images/POSTSAMEVALUE.png)
+![](Images/POSTSAMEVALUES.png)
 
 As you can see BEFORE modify the prisoner the zone was "C".
 
